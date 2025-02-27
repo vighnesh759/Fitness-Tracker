@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness Tracker - Challenges</title> 
+  <link rel="icon" href="images/5008987.png">
+  <link rel="stylesheet" type="text/css" href="challenges.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="plans.html">Pre-designed Plans</a></li>
+        <li><a href="nutrition.html">Nutrition Tracking</a></li>
+        <li><a href="challenges.html">Challenges</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+ 
+  <main>
+    <section class="challenges">
+      <h1>Challenges</h1>
+
+      <div class="challenge">
+        <div class="challenge-content">
+          <h2>30-Day Plank Challenge</h2>
+          <p>Are you ready to strengthen your core? Join our 30-Day Plank Challenge and see amazing results!</p>
+          <img src="images\plank.jpg" alt="Plank Challenge">
+          <a href="" class="btn">Learn More</a>
+        </div>
+      </div>
+
+      <div class="challenge">
+        <div class="challenge-content">
+          <h2>10K Running Challenge</h2>
+          <p>Take your running to the next level with our 10K Running Challenge. Train and complete a 10K race like a pro!</p>
+          <img src="images\running.jpg" alt="Running Challenge">
+          <a href="" class="btn">Learn More</a>
+        </div>
+      </div>
+
+      <div class="challenge">
+        <div class="challenge-content">
+          <h2>Yoga Challenge</h2>
+          <p>Improve your flexibility and find inner peace with our Yoga Challenge. Discover different yoga poses and their benefits!</p>
+          <img src="images\yoga.jpg" alt="Yoga Challenge">
+          <a href="" class="btn">Learn More</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+   $(document).ready(function() {
+  // Apply fade-in animation to challenge elements
+  $('.challenge').each(function(index) {
+    $(this).addClass('fade-in');
+  });
+
+  // Handle click events on "Learn More" buttons
+  $('.challenge-content').click(function() {
+    $(this).css('font-weight', 'bold');
+    $(this).animate({ marginTop: '-20px' }, 'slow');
+
+    // Example of text manipulation
+    var originalText = $(this).find('h2').text();
+    var newText = originalText + " - Completed!";
+    $(this).find('h2').text(newText);
+  });
+}); 
+  </script>
+  <footer>
+    <p>&copy; 2023 Fitness Tracking Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+
+
+
+
+

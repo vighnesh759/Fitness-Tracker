@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness Tracker - Nutrition Tracking</title>
+  <style>
+    /* Global styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('images/nutritionpic.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      width: 100%;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Navigation menu styles */
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    nav ul li a:hover {
+      background-color: #555;
+    }
+    .delete-btn {
+    background-color: #ff5555;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .delete-btn:hover {
+    background-color: #ff3333;
+  }
+
+  /* Animation on click */
+  .delete-btn-click {
+    animation-name: deleteButtonClick;
+    animation-duration: 0.3s;
+  }
+
+  @keyframes deleteButtonClick {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+    table, th, td {
+  border: 1px solid hsl(0, 100%, 50%);
+}
+#nutrition-table th,td {
+      color: #ff0000;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #333; opacity: 0.5; filter: alpha(opacity=50)
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="plans.html">Pre-designed Plans</a></li>
+        <li><a href="nutrition.html">Nutrition Tracking</a></li>
+        <li><a href="challenges.html">Challenges</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="nutrition">
+      <h1>Nutrition Tracking</h1>
+
+      <div class="daily-intake">
+        <h2>Daily Nutrition Intake</h2>
+        <table id="nutrition-table">
+          <tr>
+            <th>Food Item</th>
+            <th>Portion Size</th>
+            <th>Calories</th>
+            <th>Protein (g)</th>
+            <th>Carbs (g)</th>
+            <th>Fat (g)</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>Oatmeal</td>
+            <td>1 cup</td>
+            <td>150</td>
+            <td>5</td>
+            <td>30</td>
+            <td>2</td>
+            <td><button class="delete-btn">Delete</button></td>
+          </tr>
+          <tr>
+            <td>Chicken Breast</td>
+            <td>4 oz</td>
+            <td>120</td>
+            <td>26</td>
+            <td>0</td>
+            <td>2</td>
+            <td><button class="delete-btn">Delete</button></td>
+          </tr>
+          <tr>
+            <td>Broccoli</td>
+            <td>1 cup</td>
+            <td>55</td>
+            <td>3</td>
+            <td>11</td>
+            <td>0.6</td>
+            <td><button class="delete-btn">Delete</button></td>
+          </tr>
+          <!-- Add more rows with random examples -->
+          <tr>
+            <td>Salmon</td>
+            <td>6 oz</td>
+            <td>350</td>
+            <td>34</td>
+            <td>0</td>
+            <td>22</td>
+            <td><button class="delete-btn">Delete</button></td>
+          </tr>
+          <tr>
+            <td>Greek Yogurt</td>
+            <td>1 container</td>
+            <td>150</td>
+            <td>20</td>
+            <td>8</td>
+            <td>2</td>
+            <td><button class="delete-btn">Delete</button></td>
+          </tr>
+        </table>
+        <p id="total-nutrition">Total Calories: 0 | Protein (g): 0 | Carbs (g): 0 | Fat (g): 0</p>
+      </div>
+
+      <div class="add-food">
+        <h2>Add Food Item</h2>
+        <form id="add-food-form">
+          <input type="text" name="food-item" placeholder="Food Item" required>
+          <input type="text" name="portion-size" placeholder="Portion Size" required>
+          <input type="number" name="calories" placeholder="Calories" required>
+          <input type="number" name="protein" placeholder="Protein (g)" required>
+          <input type="number" name="carbs" placeholder="Carbs (g)" required>
+          <input type="number" name="fat" placeholder="Fat (g)" required>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Delete row when delete button is clicked
+      $(document).on('click', '.delete-btn', function() {
+        $(this).closest('tr').remove();
+        updateTotalNutrition();
+      });
+  
+      // Add new row when the form is submitted
+      $('#add-food-form').submit(function(e) {
+        e.preventDefault();
+        var foodItem = $('input[name="food-item"]').val();
+        var portionSize = $('input[name="portion-size"]').val();
+        var calories = parseInt($('input[name="calories"]').val());
+        var protein = parseInt($('input[name="protein"]').val());
+        var carbs = parseInt($('input[name="carbs"]').val());
+        var fat = parseInt($('input[name="fat"]').val());
+  
+        if (isNaN(calories) || isNaN(protein) || isNaN(carbs) || isNaN(fat)) {
+          alert('Please enter valid numeric values for calories, protein, carbs, and fat.');
+          return;
+        }
+  
+        var newRow = `
+          <tr>
+            <td>${foodItem}</td>
+            <td>${portionSize}</td>
+            <td>${calories}</td>
+            <td>${protein}</td>
+            <td>${carbs}</td>
+            <td>${fat}</td>
+            <td><button class="delete-btn">Delete</button></td>
+          </tr>
+        `;
+        $('#nutrition-table').append(newRow);
+  
+        updateTotalNutrition();
+        $('#add-food-form')[0].reset();
+      });
+  
+      // Update the total nutrition values
+      function updateTotalNutrition() {
+        var totalCalories = 0;
+        var totalProtein = 0;
+        var totalCarbs = 0;
+        var totalFat = 0;
+  
+        $('#nutrition-table tbody tr').each(function() {
+          var row = $(this);
+          var calories = parseInt(row.find('td:eq(2)').text());
+          var protein = parseInt(row.find('td:eq(3)').text());
+          var carbs = parseInt(row.find('td:eq(4)').text());
+          var fat = parseInt(row.find('td:eq(5)').text());
+  
+          if (!isNaN(calories)) totalCalories += calories;
+          if (!isNaN(protein)) totalProtein += protein;
+          if (!isNaN(carbs)) totalCarbs += carbs;
+          if (!isNaN(fat)) totalFat += fat;
+        });
+  
+        $('#total-nutrition').text('Total Calories: ' + totalCalories + ' | Protein (g): ' + totalProtein + ' | Carbs (g): ' + totalCarbs + ' | Fat (g): ' + totalFat);
+      }
+    });
+  </script>
+  <footer>
+    <p>&copy; 2023 Fitness Tracking Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+

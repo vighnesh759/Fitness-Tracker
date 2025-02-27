@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness Tracker - Contact Us</title>
+  <style>
+    /* Global styles */
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('images/contactpic.jpg');
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}
+
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  background: #333; opacity: 0.8; filter: alpha(opacity=80);
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Navigation menu styles */
+nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+}
+
+
+/* Contact page styles */
+.contact {
+  text-align: center;
+  padding: 50px;
+  color: rgb(12, 221, 221);
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.contact-details,
+.contact-form,
+.contact-social {
+  flex-basis: 30%;
+  margin-bottom: 50px;
+}
+
+.contact-details h2,
+.contact-form h2,
+.contact-social h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contact-form form input,
+.contact-form form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.contact-form form textarea {
+  height: 150px;
+}
+
+.contact-form form button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-form form button:hover {
+  background-color: #555;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+}
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #333; opacity: 0.5; filter: alpha(opacity=50)
+}
+.fade-in-down {
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="plans.html">Pre-designed Plans</a></li>
+        <li><a href="nutrition.html">Nutrition Tracking</a></li>
+        <li><a href="challenges.html">Challenges</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="contact">
+      <h1 class="fade-in-down" style="animation-delay: 0.5s; animation-name: fadeInDown;">Contact Us</h1>
+      
+      <div class="contact-info">
+        <div class="contact-details fade-in-down" style="animation-delay: 1s; animation-name: fadeInDown;">
+          <h2>Get in Touch</h2>
+          <p>If you have any questions or feedback, feel free to contact us.</p>
+          <p>We would love to hear from you!</p>
+        </div>
+        
+        <div class="contact-form fade-in-down" style="animation-delay: 1.5s; animation-name: fadeInDown;">
+          <h2>Send us a Message</h2>
+          <form id="contact-form">
+            <input type="text" name="name" id="name" placeholder="Your Name">
+            <input type="email" name="email" id="email" placeholder="Your Email">
+            <textarea name="message" id="message" placeholder="Your Message"></textarea>
+            <button type="submit" id="submit-btn">Send</button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="contact-social fade-in-down" style="animation-delay: 2s; animation-name: fadeInDown;">
+        <div class="social-icons">
+          <a href="https://www.facebook.com/"><img src="images\facebook.png" alt="Facebook"></a>
+          <a href="https://twitter.com/i/flow/login"><img src="images\twitter.png" alt="Twitter"></a>
+          <a href="https://www.instagram.com/"><img src="images\instagram.png" alt="Instagram"></a>
+          <a href="https://www.linkedin.com/"><img src="images\linkedin.png" alt="LinkedIn"></a>
+        </div>
+        <h2 class="fade-in-down" style="animation-delay: 2.5s; animation-name: fadeInDown;">Connect with Us</h2>
+      </div>
+    </section>
+  </main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $(".fade-in-down").addClass("animated");
+
+    // Text manipulation on click
+    $("h1").on("click", function() {
+      $(this).text("Thank you!");
+    });
+
+    // Form submission handling
+    $("#contact-form").submit(function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get form values
+      var name = $("#name").val();
+      var email = $("#email").val();
+      var message = $("#message").val();
+
+      // Perform form validation
+      if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      // Display success message and clear form
+      alert("Thank you for your message!");
+      $("#name").val("");
+      $("#email").val("");
+      $("#message").val("");
+    });
+  });
+</script>
+<footer>
+  <p>&copy; 2023 Fitness Tracking Project. All rights reserved.</p>
+</footer>
+</body>
+</html>

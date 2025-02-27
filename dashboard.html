@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness Tracker - Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="db.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+  <style>
+ /* Global styles */
+ body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('images/dashboardpic.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+  
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  background: #333; opacity: 0.8; filter: alpha(opacity=80);
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Navigation menu styles */
+nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+}
+  
+  .dashboard {
+    margin: 20px;
+  }
+  
+  .dashboard h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .fitness-stats {
+    background-color: #EFEFEF;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .goals {
+    background: linear-gradient(135deg, #F4F6F8, #D4D8DD);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .fitness-stats:hover{
+    transform: scale(1.02);
+  }
+  .goals:hover {
+    transform: scale(1.02);
+  }
+  
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="plans.html">Pre-designed Plans</a></li>
+        <li><a href="nutrition.html">Nutrition Tracking</a></li>
+        <li><a href="challenges.html">Challenges</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="dashboard">
+      <h1>Welcome to Your Dashboard</h1>
+      
+      <div class="fitness-stats">
+          <h2 style="text-align: left; font-weight: bolder; font-size: x-large;">Fitness Statistics</h2>
+          <ul>
+            <li>Steps: <span>7826</span></li>
+            <li>Calories Burned: <span>2463</span></li>
+            <li>Distance: <span>5.7 km</span></li>
+            <li>Heart Rate: <span>120 bpm</span></li>
+          </ul>
+      </div>
+        <div class="goals">
+          <h3 style="text-align: left; font-weight: bolder; font-size: x-large;">Fitness Goals</h3>
+          <ul>
+            <li>Steps Goal: <span>12,000</span></li>
+            <li>Calories Goal: <span>4000</span></li>
+            <li>Distance Goal: <span>8 km</span></li>
+            <li>Heart Rate Goal: <span>110 bpm</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="frame">
+    <div class="center">
+      <div class="headline">
+        <div class="small">your daily</div>progress
+      </div>
+      <div class="circle-big">
+        <div class="text">
+         2463 <div class="small">kcal</div>
+        </div>
+        <svg>
+          <circle class="bg" cx="57" cy="57" r="52"/>
+          <circle class="progress" cx="57" cy="57" r="52"/>
+        </svg>
+      </div>
+      <div class="circles-small">
+        <div class="circle-small">
+          <div class="text">
+            7826<div class="small">steps</div>
+          </div>
+          <svg>
+            <circle class="bg" cx="40" cy="40" r="37"/>
+            <circle class="progress one" cx="40" cy="40" r="37"/>
+          </svg>
+        </div>
+        <div class="circle-small">
+          <div class="text">
+            5.7<div class="small">km</div>
+          </div>
+          <svg>
+            <circle class="bg" cx="40" cy="40" r="37"/>
+            <circle class="progress two" cx="40" cy="40" r="37"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  $(document).ready(function() {
+    // Hide the "Your Daily Progress" block initially
+    $('.frame').hide();
+  
+    // Add click event handler to the "Fitness Statistics" heading
+    $('.fitness-stats h2').click(function() {
+      // Toggle visibility of the "Your Daily Progress" block
+      $('.frame').toggle();
+    });
+  });
+</script>  
+  <footer>
+    <p>&copy; 2023 Fitness Tracking Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>

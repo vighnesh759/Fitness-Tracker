@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Planner</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+   body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('images/bg_1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  background: #333; opacity: 0.8; filter: alpha(opacity=80);
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Navigation menu styles */
+nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+}
+  
+  .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background: transparent;
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: black;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: black;
+    }
+
+    input[type="text"],
+    select,
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    select:focus,
+    input[type="number"]:focus {
+      border-color: #ec7e18;
+      outline: none;
+    }
+
+    .row {
+      margin-bottom: 10px;
+    }
+
+    .row::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .col {
+      float: left;
+    }
+
+    .col-2 {
+      width: 16.67%;
+    }
+
+    .col-8 {
+      width: 66.67%;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      background-color: #ec7e18;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-danger {
+      background-color: #f85374;
+    }
+
+    .btn:hover,
+    .btn:focus {
+      background-color: black;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      font-size: larger;
+      color: #ec7e18; 
+      font-weight: bolder;
+    }
+
+    thead th {
+      background-color: #876633;
+      color: #fff;
+    }
+
+    tfoot th {
+      background-color: #f1e5d1;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    .animated {
+      animation-duration: 0.5s;
+      animation-fill-mode: both;
+    }
+
+    .fadeIn {
+      animation-name: fadeIn;
+    }
+
+    .slideInRight {
+      animation-name: slideInRight;
+    }
+    footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #333; opacity: 0.5; filter: alpha(opacity=50);
+}
+  </style>
+</head>
+<body>
+    <header>
+        <nav>
+          <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="plans.html">Pre-designed Plans</a></li>
+            <li><a href="nutrition.html">Nutrition Tracking</a></li>
+            <li><a href="challenges.html">Challenges</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+      </header>
+  <div class="container">
+    <h3 class="animated fadeIn">WORKOUT PLANNER</h3>
+
+    <form class="animated fadeIn">
+      <div class="row">
+        <div class="col col-8">
+          <label for="exerciseName">Exercise Name:</label>
+          <input id="exerciseName" name="exercise" type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-2">
+          <label for="muscleGroup">Muscle Group:</label>
+          <select id="muscleGroup">
+            <option value="">Choose...</option>
+            <option value="chest">Chest</option>
+            <option value="back">Back</option>
+            <option value="legs">Legs</option>
+            <option value="shoulders">Shoulders</option>
+            <option value="arms">Arms</option>
+          </select>
+        </div>
+
+        <div class="col col-2">
+          <label for="sets">Sets:</label>
+          <input id="sets" type="number" min="0" max="100">
+        </div>
+
+        <div class="col col-2">
+          <label for="reps">Reps:</label>
+          <input id="reps" type="number" min="0" max="100">
+        </div>
+
+        <div class="col col-2">
+          <label for="weight">Weight:</label>
+          <input id="weight" type="number" step="5" min="0" max="1000">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-info">Submit</button>
+          <button type="button" class="btn btn-danger">Remove All</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="row">
+      <table class="animated fadeIn">
+        <thead>
+          <tr>
+            <th>Muscle Targeted</th>
+            <th>Exercise Name</th>
+            <th>Reps</th>
+            <th>Sets</th>
+            <th>Weight</th>
+            <th>1RM</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Chest</td>
+            <td>Bench Press</td>
+            <td>10</td>
+            <td>3</td>
+            <td>100</td>
+            <td>120</td>
+            <td><input type="button" class="btn btn-danger" value="Remove"></td>
+          </tr>
+          <tr>
+            <td>Back</td>
+            <td>Deadlift</td>
+            <td>8</td>
+            <td>4</td>
+            <td>150</td>
+            <td>180</td>
+            <td><input type="button" class="btn btn-danger" value="Remove"></td>
+          </tr>
+          <tr>
+            <td>Legs</td>
+            <td>Squat</td>
+            <td>12</td>
+            <td>3</td>
+            <td>120</td>
+            <td>140</td>
+            <td><input type="button" class="btn btn-danger" value="Remove"></td>
+          </tr>
+          <tr>
+            <td>Shoulders</td>
+            <td>Overhead Press</td>
+            <td>8</td>
+            <td>3</td>
+            <td>80</td>
+            <td>100</td>
+            <td><input type="button" class="btn btn-danger" value="Remove"></td>
+          </tr>
+          <tr>
+            <td>Arms</td>
+            <td>Bicep Curls</td>
+            <td>10</td>
+            <td>3</td>
+            <td>20</td>
+            <td>25</td>
+            <td><input type="button" class="btn btn-danger" value="Remove"></td>
+          </tr>
+          <tr>
+            <td>Legs</td>
+            <td>Lunges</td>
+            <td>12</td>
+            <td>4</td>
+            <td>50</td>
+            <td>60</td>
+            <td><input type="button" class="btn btn-danger" value="Remove"></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>Total Reps</th>
+            <th>Total Sets</th>
+            <th>Total Weight</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function() {
+      // Code for DOM manipulation and event handling
+  
+      // Submit Button Click Event
+      $("form").submit(function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+  
+        // Get the input values
+        var exerciseName = $("#exerciseName").val();
+        var muscleGroup = $("#muscleGroup").val();
+        var sets = $("#sets").val();
+        var reps = $("#reps").val();
+        var weight = $("#weight").val();
+  
+        // Append a new row to the table with the input values
+        var newRow = `
+          <tr style="display: none;">
+            <td>${muscleGroup}</td>
+            <td>${exerciseName}</td>
+            <td>${reps}</td>
+            <td>${sets}</td>
+            <td>${weight}</td>
+            <td>${calculate1RM(weight, reps)}</td>
+            <td><input type="button" class="btn btn-danger" value="Remove"></td>
+          </tr>
+        `;
+        $("tbody").append(newRow);
+  
+        // Animate the new row using fadeIn
+        $("tbody tr:last-child").fadeIn(500);
+  
+        // Clear the input fields
+        $("#exerciseName").val("");
+        $("#muscleGroup").val("");
+        $("#sets").val("");
+        $("#reps").val("");
+        $("#weight").val("");
+  
+        // Update the total values in the table footer
+        updateTotalValues();
+      });
+  
+      // Remove Button Click Event
+      $("table").on("click", ".btn-danger", function() {
+        var row = $(this).closest("tr");
+  
+        // Animate the row using custom animation
+        row.animate(
+          {
+            paddingLeft: "100%",
+            paddingRight: "100%",
+            opacity: 0,
+            borderBottomWidth: "5px",
+            borderColor: "#000",
+          },
+          {
+            duration: 500,
+            complete: function() {
+              // Blink effect using fadeIn and fadeOut
+              row.fadeIn(200).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200, function() {
+                row.remove();
+                updateTotalValues();
+              });
+            },
+          }
+        );
+      });
+  
+      // Remove All Button Click Event
+      $(".btn-danger-all").click(function() {
+        // Animate all rows using fadeOut before removing
+        $("tbody tr").fadeOut(500, function() {
+          $("tbody").empty();
+          updateTotalValues();
+        });
+      });
+  
+      // Function to calculate 1 Rep Max (1RM)
+      function calculate1RM(weight, reps) {
+        // Calculation logic for 1RM
+        return Math.round(weight / (1.0278 - 0.0278 * reps));
+      }
+  
+      // Function to update the total values in the table footer
+      function updateTotalValues() {
+        var totalReps = 0;
+        var totalSets = 0;
+        var totalWeight = 0;
+  
+        $("tbody tr").each(function() {
+          var reps = parseInt($(this).find("td:nth-child(3)").text());
+          var sets = parseInt($(this).find("td:nth-child(4)").text());
+          var weight = parseInt($(this).find("td:nth-child(5)").text());
+  
+          totalReps += reps;
+          totalSets += sets;
+          totalWeight += weight;
+        });
+  
+        $("tfoot th:nth-child(3)").text(totalReps);
+        $("tfoot th:nth-child(4)").text(totalSets);
+        $("tfoot th:nth-child(5)").text(totalWeight);
+      }
+    });
+  </script>
+  <footer>
+    <p>&copy; 2023 Fitness Tracking Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness Tracker - Home</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="plans.html">Pre-designed Plans</a></li>
+        <li><a href="nutrition.html">Nutrition Tracking</a></li>
+        <li><a href="challenges.html">Challenges</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="banner">
+      <h1>Welcome to Fitness Tracker</h1>
+      <p>Track your workouts, set goals, and achieve your fitness targets.</p>
+    </section>
+    <section class="registration">
+      <h2>Create an Account</h2>
+      <form action="dashboard.html">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-row">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <input type="checkbox" id="showPassword">
+          <label for="showPassword">Show Password</label>
+        </div>
+        <div class="form-row">
+          <button type="submit">Create Account</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <script>
+    // jQuery code goes here
+    $(document).ready(function() {
+      // Code to be executed when the DOM is ready
+      console.log('Page loaded!');
+      
+      // Show/hide password toggle
+      $('#showPassword').change(function() {
+        var passwordInput = $('#password');
+        
+        if ($(this).is(':checked')) {
+          passwordInput.attr('type', 'text');
+        } else {
+          passwordInput.attr('type', 'password');
+        }
+      });
+      
+      // Animate blank left inputs and make them red
+      $('input').blur(function() {
+        var inputValue = $(this).val();
+        
+        if (inputValue.trim() === '') {
+          $(this).css('border-color', 'red');
+          alert('Please fill in all the required fields.');
+        }
+      });
+      
+      // Reset border color on input focus
+      $('input').focus(function() {
+        $(this).css('border-color', '');
+      });
+    });
+  </script>
+  <footer>
+    <p>&copy; 2023 Fitness Tracking Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
